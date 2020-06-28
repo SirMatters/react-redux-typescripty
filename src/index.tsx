@@ -1,17 +1,47 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+interface AppProps {
+  color: string;
+  size?: string;
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+interface AppState {
+  counter: number;
+}
+
+class App extends React.Component<AppProps> {
+  state = {
+    counter: 0,
+  };
+
+  count = (operation: boolean): void => {
+    this.setState((currState: AppState) => ({
+      counter: currState.counter + (operation ? 1 : -1),
+    }));
+  };
+
+  render() {
+    return (
+      <div>
+        <button
+          onClick={() => {
+            this.count(true);
+          }}
+        >
+          Increment
+        </button>
+        <button
+          onClick={() => {
+            this.count(false);
+          }}
+        >
+          Decrement
+        </button>
+        {this.state.counter}
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<App color='red' />, document.getElementById('root'));
