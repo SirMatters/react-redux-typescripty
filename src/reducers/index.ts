@@ -1,4 +1,4 @@
-import { combineReducers, Store } from 'redux';
+import { combineReducers } from 'redux';
 import { todos } from './todos';
 import { Todo } from '../actions';
 
