@@ -4,7 +4,7 @@ import { ActionTypes } from '../actions/types';
 export const todos = (state: Todo[] = [], action: FetchTodosAction) => {
   switch (action.type) {
     case ActionTypes.fetchTodos:
-      return [...state, action.payload];
+      return action.payload;
     default:
       return state;
   }
